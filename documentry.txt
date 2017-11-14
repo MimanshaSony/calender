@@ -1,0 +1,228 @@
+ signup ---
+     URL-POST { http://localhost:8080/calender/v1/signup }
+     KEYS –
+        name
+	email
+	code
+	mobile
+	password
+
+    OUTPUT--{"error":false,"message":"You are successfully registered"}
+
+    ERROR- {
+         {"error": true,"message": "name is not valid"}
+         {"error": true,"message": "Mobile No. is not valid, Please Enter 10 Digit Mobile No."}
+	 {"error":true,"message":"Sorry, this email already existed"}
+         { "error": true,"message": "Required field(s) name, email, code, phone, password is missing or empty"}  }
+
+login ---
+      URL-POST {http://localhost:8080/calender/v1/login}
+      KEYS –
+	email
+	password
+
+   OUTPUT--{"error":false,"name":"XXX","email":"XXX@gmail.com"}
+   
+   ERROR- {
+	{"error":true,"message":"Login failed. Incorrect credentials"}
+	{"error": true,   "message": "Required field(s) is missing or empty"} }
+
+forgetPassword---
+      URL-PUT { http://localhost:8080/calender/v1/forgetPassword }
+       Keys-
+	email
+	new_password
+	confirm_password
+
+   OUTPUT--{   "error": false,"message": "Updated Succesfully "}
+
+   ERROR- {{"error": true,"message": "Error Occured"}
+	{ "error": true,"message": "new_password confirm_password not matched"}
+	{ "error": true,"message": "Required field(s) is missing or empty"} }
+
+save---
+      URL-POST { http://localhost:8080/calender/v1/save}
+      Keys-
+	Event_name
+	start_date
+	start_time
+	end_date
+	end_time
+	month
+	year
+	add_notes
+	file
+
+   OUTPUT--{ "error": false, "message": "Event is successfully created"}
+  
+    ERROR- { {"error": true,"message": "Error Occured"} 
+	   { "error": true,"message": "Required field(s) is missing or empty"}}
+
+search---
+      URL- GET { http://localhost:8080/calender/v1/search}
+      Keys-
+	event
+
+ OUTPUT--{"error": false,
+    "tasks": [
+        {
+          "start_date":-- ,
+          "end_date":-- 
+        }}
+
+searchByDate---
+   URL-GET {http://localhost:8080/calender/v1/searchByDate}
+   KEY-
+	date
+
+OUTPUT--{ "error": false,
+    "tasks": [
+        {
+            "Event_name": "----"
+        }
+    ]}
+
+
+dayEvents---
+   URL- GET{ http://localhost:8080/calender/v1/dayEvents }
+   KEY-
+	start_date
+
+OUTPUT--{"error": false,
+    "tasks": [
+        {
+            "Event_name": ----,
+            "start_date": --,
+            "start_time": --,
+            "end_date": --,
+            "end_time": --
+        }
+    ]}
+
+
+monthEvents---
+   URL- GET{ http://localhost:8080/calender/v1/monthEvents }
+   KEY - 
+	month
+              
+OUTPUT--{""error": false,
+    "tasks": [
+        {
+            "start_date": --
+        }]
+
+
+yearEvents---
+   URL- GET{ http://localhost:8080/calender/v1/yearEvents }
+   KEY - 
+	year
+              
+OUTPUT--{""error": false,
+    "tasks": [
+        {
+            "start_date": --
+        }]
+
+
+changeName---
+   URL- PUT{ http://localhost:8080/calender/v1/changeName }
+   KEY - 
+	email
+	name
+	new_name
+              
+OUTPUT--{ "error": false, "message": "Updated Succesfully "}
+        
+ ERROR- {"    "error": true, "message": "Required field(s) is missing or empty" }
+
+
+changeNumber---
+   URL- PUT{ http://localhost:8080/calender/v1/changeNumber }
+   KEY - 
+	email
+	mobile
+	new_number
+              
+OUTPUT--{ "error": false, "message": "Updated Succesfully "}
+        
+ ERROR- {"    "error": true, "message": "Required field(s) is missing or empty" }
+
+
+changePassword---
+   URL- PUT{ http://localhost:8080/calender/v1/changePassword }
+   KEY - 
+	email
+	password
+	new_password
+	confirm_password
+              
+OUTPUT--{ "error": false, "message": "Updated Succesfully "}
+        
+ ERROR- {"    "error": true, "message": "Required field(s) is missing or empty" }
+
+
+custom---
+   URL- POST{ http://localhost:8080/calender/v1/custom }
+   KEY - 
+	start_date
+	start_time
+	end_date
+	end_time
+              
+OUTPUT--{ "error": false, "message": "You are successfully customized"}
+        
+ ERROR- {"    "error": true, "message": "Required field(s) is missing or empty" }
+
+
+doRepeat---
+   URL- GET{ http://localhost:8080/calender/v1/doRepeat }
+   KEY - 
+	repeat
+              
+OUTPUT--{ "error": false,
+    "tasks": [
+        {
+            "cus": ---
+        }
+    ]
+
+
+customReminder---
+   URL- GET{ http://localhost:8080/calender/v1/customReminder }
+   KEY - 
+	CustomReminder
+              
+OUTPUT--{"error": false,
+    "tasks": [
+        {
+            "bell": ---
+        }
+    ]
+
+startReminder---
+   URL- GET{ http://localhost:8080/calender/v1/startReminder }
+   KEY - 
+	StartReminder
+              
+OUTPUT--{"error": false,
+    "tasks": [
+        {
+            "note": ---
+        }
+    ]
+
+
+language---
+   URL- GET{ http://localhost:8080/calender/v1/language }
+   KEY - 
+	Language
+              
+OUTPUT--{"error": false,
+    "tasks": [
+        {
+            "lan": ---
+        }
+    ]
+
+
+
